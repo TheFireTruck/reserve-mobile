@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:reserve_io/features/home/presentation/pages/homepage.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -9,7 +11,37 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(const Duration(seconds: 3)).then(
+      (value) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              return const Homepage();
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      body: Column(
+        children: [
+          Center(
+            child: Text(
+              'Reserve.io',
+              style: GoogleFonts.openSans(
+                  fontWeight: FontWeight.w600, fontSize: 20),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }
